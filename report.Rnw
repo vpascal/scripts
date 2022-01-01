@@ -1,0 +1,586 @@
+\documentclass[english]{scrreprt}
+\usepackage{lmodern}
+\usepackage{bbding}
+\usepackage{caption}
+\usepackage{fixltx2e}
+\usepackage{helvet}
+\usepackage{graphicx} 
+\usepackage{soul} 
+\usepackage{lmodern} 
+\newcommand{\graph}[3]{
+\raisebox{-#1mm}{\includegraphics[height=#2em]{#3}}
+}
+\renewcommand{\ttdefault}{cmtt}
+\renewcommand{\familydefault}{\rmdefault}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage[letterpaper]{geometry}
+\geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{multicol}
+\usepackage{babel}
+\setcounter{secnumdepth}{-1}
+\setcounter{tocdepth}{3}
+\setlength{\parskip}{0bp}
+\setlength{\parindent}{0pt}
+\usepackage{array}
+\usepackage{placeins}
+\usepackage{booktabs}
+\usepackage{fixltx2e}
+\makeatletter
+\lhead{\textit{Economic Development in Holmes County}}
+\rhead{}
+\begin{document}
+\title{Economic Development in Holmes County}
+\subtitle{A Data Profile of Holmes County and its Surrounding Counties}
+\author{\emph{\normalsize Voinovich School of Leadership and Public Affairs}}
+\maketitle
+\pagebreak{}
+\newgeometry{top=2cm,bottom=.8cm}
+\tableofcontents{}
+\thispagestyle{empty}
+\null\vfill\begin{center}\rule[0.4pt]{1\columnwidth}{0.4pt}\scriptsize{\sc{\so{\\Ohio University $\bullet$ Voinovich School of Leadership and Public Affairs\\Building 21 $\bullet$ The Ridges $\bullet$ Athens, OH 45780\\(740) 593 - 9381}}} $\bullet$ \scriptsize{\so{gvsinfo@ohio.edu}}\end{center}
+\restoregeometry
+\pagebreak{}
+\begingroup
+\let\clearpage\relax
+\listoffigures
+\listoftables
+\endgroup
+\thispagestyle{empty}
+\renewcommand{\thetable}{\arabic{table}}
+\renewcommand{\thefigure}{\arabic{figure}}
+\pagebreak{}
+\setcounter{page}{1} 
+\section{Introduction}
+\begin{flushleft}The purpose of this report is to  help inform economic development in the area by providing updated data on socio-economic indicators in Holmes County. In order to create a detailed picture of the socio-economic situation in Holmes and the neighboring counties, eight indicators were used. These include:\end{flushleft}
+\begin{itemize}
+  \item \begin{multicols}{2}Population
+  \item Migration
+  \item Labor Market
+  \item Workflow
+  \item Industry Statistics
+  \item Income
+  \item Taxable Value of Real Property
+  \item Occupational Profile \end{multicols}
+\end{itemize}
+
+\\\begin{flushleft}Socio-economic characteristics in Holmes County were directly compared to those in Carroll and Guernsey Counties.  These counties were selected because of their similarity in demographic and socio-economic indicators.  Holmes County is also compared to the \emph{neighboring county region}, defined  as a composite of the counties that surround Holmes County: Ashland, Coshocton, Knox, Stark, Tuscarawas, and Wayne. In some cases the results are presented by individual counties.\end{flushleft}
+
+\\\begin{flushleft}Data for this report were obtained from multiple sources including the U.S. Census Bureau, the U.S. Bureau of Economic Analysis, the U.S. Bureau of Labor Statistics, and the Ohio Department of Taxation.\end{flushleft}
+
+\\\begin{flushleft}The report contains two integrated parts - visual and descriptive - which can be used together or separately. The figures contain precise data as reported by, or calculated from, publicly available data sources.\end{flushleft}
+\pagebreak{}
+<<echo=FALSE,warning=FALSE,message=FALSE,fig.align='center',fig.pos="h",fig.cap="Study Area",fig.width=7>>=
+library(ggplot2)
+library(maps)
+library(Hmisc)
+library(mapproj)
+
+county_df <- map_data('county')  #mappings of counties by state
+coord <- mapproject(county_df$long,county_df$lat,projection = "lambert", parameters=c(39,42), orientation=c(90,0,-83) )
+county_df$x <- coord$x
+county_df$y <- coord$y
+oh <- subset(county_df, region =="ohio")   #subset just for oh
+oh$county <-oh$subregion
+
+cnames <- aggregate(cbind(x, y) ~ subregion, data=oh,FUN=function(x)mean(range(x)))
+cnames<-cnames[cnames$subregion %in% c("ashland","carroll","holmes","wayne","stark","knox","wayne","coshocton","tuscarawas","guernsey"),]
+cnames$subregion <-capitalize(cnames$subregion)
+
+oh$Area[oh$county!="ashland"]<-"Rest of Ohio"
+
+oh$Area[oh$subregion=="holmes"]<-"Holmes"
+oh$Area[oh$subregion=="carroll"]<-"Carroll"
+oh$Area[oh$subregion=="guernsey"]<-"Guernsey"
+
+oh$Area[oh$subregion =="ashland"]<-"Neighboring Counties"
+oh$Area[oh$subregion=="wayne"]<-"Neighboring Counties"
+oh$Area[oh$subregion=="stark"]<-"Neighboring Counties"
+oh$Area[oh$subregion=="knox"]<-"Neighboring Counties"
+oh$Area[oh$subregion=="coshocton"]<-"Neighboring Counties"
+oh$Area[oh$subregion=="tuscarawas"]<-"Neighboring Counties"
+
+p<-ggplot(oh, aes(x, y)) + geom_polygon(aes(group=group,fill=Area), colour="white")+ coord_map()+geom_text(data=cnames, aes(label = subregion),colour='white', size=2)+scale_fill_manual(values = c("#FA9A99","#E69F00", "#339F2C","#1F78B4","#B7D7E7"))
+
+p+theme(panel.border=element_blank(),panel.grid.major=element_blank(),panel.background=element_blank(),axis.title=element_blank(),axis.text=element_blank(),axis.ticks=element_blank())+theme(legend.position=c(0.93,0.14))
+@
+\pagebreak{}
+\newpage
+\section{Population}
+\begin{flushleft}Table 1 below shows that Holmes County was one of the smaller counties in the region with a total population of 42,746 in 2011. Counties with similar population numbers are Coshocton and Guernsey. Stark County had the largest population\footnote{Source: U.S. Bureau of Economic Analysis (BEA); BEA uses the U.S. Census Bureau's annual population estimates.}. Between 2000 and 2011, Holmes County experienced 9.5 percent increase in population, the second largest increase in the region.\end{flushleft}
+\begin{table}[ht]
+\caption{Population 2000 - 2011}
+\centering
+\begin{tabular}{rlrrcr}
+  \toprule
+& County & 2000 & 2011 & BarPlot & \% Change \\ 
+  \hline
+& Holmes & 39,049 & 42,746 & \graph{1}{1}{out11-1} & 9.5\% \\ 
+& Carroll & 28,851 & 28,782 & \graph{1}{1}{out11-2} & -0.2\% \\ 
+& Guernsey & 40,803 & 39,927 & \graph{1}{1}{out11-3} & -2.1\% \\ 
+& Ashland & 52,502 & 53,153 & \graph{1}{1}{out11-4} & 1.2\% \\ 
+& Coshocton & 36,724 & 36,955 & \graph{1}{1}{out11-5} & 0.6\% \\ 
+& Knox & 54,616 & 61,275 & \graph{1}{1}{out11-6} & 12.2\% \\ 
+& Stark & 378,036 & 375,087 & \graph{1}{1}{out11-7} & -0.8\% \\ 
+& Tuscarawas & 91,043 & 92,508 & \graph{1}{1}{out11-8} & 1.6\% \\ 
+& Wayne & 111,668 & 114,611 & \graph{1}{1}{out11-9} & 2.6\% \\ 
+   \bottomrule
+\end{tabular}
+\end{table}
+\begin{flushleft}Figure 2 below shows that Holmes County and the neighboring county region are the only two areas to experience consistent population increases, while Carroll and Guernsey counties have both seen declines.  The increase in Holmes County was almost eight times larger than that of the neighboring county region. Please see Figure 3 on page 4.\end{flushleft}
+\\
+<<echo=FALSE,warning=FALSE,message=FALSE,fig.align='center', fig.height=3.9,fig.width=8,fig.cap="Annual Percent Change in Population, 2000-2011",fig.pos="h">>=
+library(ggplot2)
+library(grid)
+Holmes<-c(0.0, 1.9, 3.7, 4.6, 5.9, 6.6, 7.1, 7.1 ,7.6 ,8.3,8.7,9.5)
+Carroll<-c(0.0, 0.4, 1.1, 1.6, 1.5, 0.9, 1.1, 0.7, 0.5, 0.2,-0.2,-0.2)
+Guernsey<-c(0.0, 0.1, 0.5, 0.8, 0.4, -0.1, -0.5, -0.7, -1.1, -1.4, -1.8, -2.1)
+Neighboring_Counties<-c(0.0, 0.2, 0.4, 0.6, 0.8, 0.9, 1.1, 1.3, 1.5, 1.3, 1.2, 1.2)
+frame14<-data.frame(Carroll,Guernsey,Holmes,Neighboring_Counties)
+year<-c(2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011)
+library(reshape2)
+frame14<-data.frame(frame14,year)
+frame14m<-melt(frame14,id= ("year"))
+frame14m$variable<-as.character(frame14m$variable)
+frame14m[which(frame14m$variable == "Neighboring_Counties"),2]<-"Neighboring Counties"
+d<-ggplot(frame14m, aes(x=year, y=value, colour=variable))
+d+geom_line(size=1)+scale_color_manual(values=c("#FB9A99", "#E69F00", "#33A02C", "#1F78B4"),name="County")+labs(y="Percent Change", x="")+ theme(legend.position="bottom")+scale_x_continuous(breaks = seq(2000, 2011, by = 1))+theme(plot.margin = unit(c(1,1,1,1), "mm"))+theme(axis.text = element_text(size=8))
+@
+\\
+\pagebreak
+<<echo=FALSE,warning=FALSE,message=FALSE,fig.align='center', fig.height=3, fig.width=4.2, fig.cap="Percent Change in Population 2000 - 2011", fig.pos="h">>=
+data<-c(9.5,0.2,-2.1,1.2)
+counties<-c("Holmes","Carroll","Guernsey","Neighboring Counties")
+data<-data.frame(data,counties)
+library(ggplot2)
+library(grid)
+p<-ggplot(data,aes(x=factor(counties),y=data))
+p<-p+geom_bar(fill="#009AFF",stat="identity",position="dodge")+labs(y="Percent Change",x="")
+p+theme(plot.margin = unit(c(0.4,0.5,0.1,0), "lines"))+theme(panel.margin = unit(c(0.25), "lines"))+theme(axis.title = element_text(size=10),axis.text = element_text(size=8))
+@
+\newline
+\section{Migration}
+\begin{flushleft}Migration refers to a situation in which individuals change their place of residence. The net value of migration is calculated by subtracting the in-migrants from the out-migrants. These datasets are based on county-to-county migration flows compiled by the Internal Revenue Service. It is important to note that data are based on the tax exemptions, which are not equivalent to individuals. Nevertheless, it is important to consider migration patterns along with a county's population to potentially identify direction in which the population may be trending.\end{flushleft}  
+\\\begin{flushleft} Table 2 and Figure 4 show that Holmes County experienced negative net migration between 2000 to 2009. Specifically, Holmes County experienced a net value of 1,281 out-migrants. Carroll, Ashland, and Knox Counties saw a positive net migration. Stark County saw the largest negative net migration with a total of 7,505 out-migrant.\end{flushleft}
+<<echo=FALSE,warning=FALSE,message=FALSE,fig.align='center',fig.height=3,fig.width=4,fig.cap="Net Migration from 2000-2009", fig.pos="h">>=
+library(grid)
+library(scales)
+frame2<-c(-2559, -931,-7505, 3228, -589, 559, 76, -1281,-394)
+counties3<-c( "Wayne", "Tuscarawas", "Stark", "Knox", "Coshocton", "Ashland",  "Carroll", "Holmes","Guernsey")
+order<-c(-9,-8,-7,-6,-5,-4,-2,-1,-3)
+frame2<-data.frame(frame2,counties3,order)
+frame2$counties3<-reorder(frame2$counties3,frame2$order)
+r<-ggplot(frame2,aes(x=factor(counties3), y=frame2))
+r<-r+geom_bar(fill="#009AFF", stat="identity", position="dodge")+labs( y="", x="")+coord_flip()
+r+theme(plot.margin = unit(c(1,1,1,1), "lines"))+theme(axis.text = element_text(size=7))+scale_y_continuous(label=comma)
+@
+\newline
+\begin{table}[ht]
+\caption{Annual Net Migration From 2000 - 2009}
+\small
+\centering
+\begin{tabular}{rlrrrrrrrrrr}
+  \toprule
+ & County & 00-01 & 01-02 & 02-03 & 03-04 & 04-05 & 05-06 & 06-07 & 07-08 & 08-09 & 00-09 \\ 
+  \hline
+ & Holmes & 108 &-16 &-180 &-17 &-146 &-224 &-410 &-254 &-142 &-1,281 \\ 
+   & Carroll & 180 & 145 & 172 &-68 &-115 & 12 &-175 &-9 &-66 & 76 \\ 
+   & Guernsey & -2&129&139&-76&-153&-116&-24&-133&-158&-394\\ 
+   & Ashland & 32&-76&231&-91&85&194&244&5&-65&559 \\ 
+   & Coshocton & 90&45&102&-48&-181&-104&-209&-245&-39&-589 \\ 
+   & Knox & 555&589&448&467&366&167&315&258&63&3,228 \\ 
+   & Stark & -1,102&-993&-954&-623&-818&-528&-424&-573&-1,490&-7,505 \\ 
+   & Tuscarawas & -115&99&-123&62&-387&-281&62&-105&-143&-931 \\ 
+   & Wayne & -240&-166&-394&-401&-184&-168&-455&-98&-453&-2,559 \\ 
+   \bottomrule
+\end{tabular}
+\end{table}
+\newline
+\pagebreak
+\section{Labor Market}
+\begin{flushleft}The unemployment rate\footnote{Source: U.S. Bureau of Labor Statistics} represents unemployment among individuals aged 16 years or older who are not employed and are actively seeking work.   While all the counties discussed in this report show similar trends in unemployment rates from 2000 to 2012, Figure 5 shows that Holmes County had a consistently lower rate than that of Guernsey, Carroll or the neighboring county region. \end{flushleft}
+<<echo=FALSE,warning=FALSE,message=FALSE,fig.align='center', fig.height=3.3,fig.width=7,fig.cap="Unemployment Rate 2000-2012", fig.pos="h">>=
+Holmes<-c(2.9, 2.9, 3.8, 4.1, 4.1, 3.9, 3.7, 4.0, 4.9, 7.7, 7.4, 6.1, 4.9)
+Carroll<-c(4.4, 4.8, 6.6, 7.7,  7.3, 6.6, 6.0, 6.1, 7.6, 13.4, 12.5, 9.8,7.5)
+Guernsey<-c(6.3, 5.6, 6.6, 7.5, 7.9, 7.1, 6.4, 6.4, 8.6, 11.9, 11.9, 10.2, 8.5)
+Neighboring_Counties<-c(4.0, 4.3, 5.7, 6.4, 6.4, 6.1, 5.4, 5.6, 6.6, 11.0, 10.7, 9.0, 7.2)
+frame15<-data.frame(Carroll,Guernsey,Holmes,Neighboring_Counties)
+library(reshape2)
+year2<-c(2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012)
+frame15<-data.frame(frame15,year2)
+frame15m<-melt(frame15,id= ("year2"))
+frame15m$variable<-as.character(frame15m$variable)
+frame15m[which(frame15m$variable == "Neighboring_Counties"),2]<-"Neighboring Counties"
+f<-ggplot(frame15m, aes(x=year2, y=value, group=variable,colour=variable))
+f<-f+geom_line(size=1.1)+scale_color_manual(values=c("#FB9A99", "#E69F00", "#33A02C", "#1F78B4"),name="County")+ labs( y="Unemployment Rate", x="")+ theme(legend.position="bottom")
+f+ theme(legend.position="bottom")+scale_x_continuous(breaks = seq(2000, 2012, by = 1))+theme(plot.margin = unit(c(1,1,1,1), "mm"))+theme(axis.text = element_text(size=7))+theme(axis.title = element_text(size=10))
+@
+\begin{table}[ht]
+\caption{Unemployment Rates 2000 - 2012}
+\centering
+\begin{tabular}{rrrrrr}
+  \toprule
+ & Year & Holmes & Carroll & Guernsey & Neighboring Counties \\ 
+  \hline
+ & 2000 & 2.9 & 4.4 & 6.3 & 4.0 \\ 
+   & 2001 & 2.9 & 4.8 & 5.6 & 4.0 \\ 
+   & 2002 & 3.8 & 6.6 & 6.6 & 5.7 \\ 
+   & 2003 & 4.1 & 7.7 & 7.5 & 6.4 \\ 
+   & 2004 & 4.1 & 7.3 & 7.9 & 6.4 \\ 
+   & 2005 & 3.9 & 6.6 & 7.1 & 6.1 \\ 
+   & 2006 & 3.7 & 6.0 & 6.4 & 5.4 \\ 
+   & 2007 & 4.0 & 6.1 & 6.4 & 5.6 \\ 
+   & 2008 & 4.9 & 7.6 & 8.6 & 6.6 \\ 
+   & 2009 & 7.7 & 13.4 & 11.9 & 11.0 \\ 
+   & 2010 & 7.4 & 12.5 & 11.9 & 10.7 \\ 
+   & 2011 & 6.1 & 9.8 & 10.2 & 9.0 \\ 
+   & 2012 & 4.9 & 7.5 & 8.5 & 7.2 \\ 
+   \bottomrule
+\end{tabular}
+\end{table}
+\begin{flushleft}Figure 6 below shows relationship between population, labor force\footnote{Labor force includes sum of employed and unemployed individuals.}, and employed individuals among nine counties in the region. Overall, Holmes County experienced positive increases in population and its labor force (as indicated by the position of data point) at the same time, enjoying a positive increase in number of employed (as indicated by the color of data point).\end{flushleft}
+<<echo=FALSE,warning=FALSE,message=FALSE,fig.align='center',fig.height=5,fig.width=10,fig.cap="Labor Market", fig.pos="h">>=
+library(ggplot2)
+library(grid)
+County<-c("Holmes","Carroll","Guernsey","Ashland","Coshocton","Knox","Stark","Tuscarawas","Wayne") 
+Population<-c(9.467592, -0.239159821,-2.146900963,1.239952764,0.629016447,12.19239783,-0.780084436,	1.609129752,2.63549092)
+Labor_Force<-c(10.6741573,  -2.816901408,	1.604278075,	-2.95202952,	-8.241758242,	8.02919708,	-3.628823224,	0,	-3.904923599)
+Employed<-c(6.936416185,  -8.823529412,	-2.857142857,	-8.076923077,	-14.94252874,	2.661596958,	-8.756756757,	-4.719101124,-3.904923599)
+data<-data.frame(County,Population, Labor_Force,Employed)
+data$Empl<-cut(data$Employed,breaks=4,right = FALSE)
+j<-ggplot(data,aes(Labor_Force, Population,label=County))+geom_point(aes(colour=Employed),size=5)+scale_color_continuous(low="red", high="blue",expression("% Change in\nNumber of \nEmployed"))
+j+theme(axis.text = element_text(size=10))+ylab("Percent Change in Population, 2000 - 2011")+xlab("Percent Change in Labor Force, 2000 - 2011")+ geom_text(hjust=-0.23,size=4.4)+scale_x_continuous(limits = c(-11, 15))+theme(axis.title = element_text(size=12))+theme(plot.margin = unit(c(1,1,1,1), "mm"))
+
+@
+\pagebreak
+\begin{flushleft}Farm employment\footnote{Source: U.S. Bureau of Economic Analysis} represents the number of workers engaged in the direct production of agricultural commodities, either livestock or crops. In 2011, farm employment accounted for about 5.6 percent of all employment in Holmes County. Table 4 shows that Holmes County reported a loss of farm employment of almost 27 percent. This drop in farm employment was offset by an increase in non-farm employment. As it can be seen Holmes County saw a 16.1 percent increase in non-farm employment.\end{flushleft}
+\begin{table}[ht]
+\caption{Farm and Non-Farm Employment in Holmes County}
+\small
+\centering
+\begin{tabular}{p{3.5cm}rrrr}
+\toprule
+Sector & Empl. 2001 & Empl. 2011 & \% Change  \\ 
+\hline
+Total employment &  24,871  &  27,953 & 12.4 \\ 
+Farm employment &  2,153  &  1,576  & -26.8 \\ 
+Nonfarm employment &  22,718  &  26,377  & 16.1 \\ 
+\bottomrule
+\end{tabular}
+\end{table}
+\begin{flushleft}Figure 7 shows that almost all counties in the region with exception of Holmes experienced decreases in both farm and non-farm employment. Holmes County was the only county with a positive increase in non-farm employment. At the same time it reported the largest drop in farm employment.\end{flushleft}
+
+<<echo=FALSE,warning=FALSE,message=FALSE,fig.align='center',fig.height=3,fig.width=6, fig.cap=" Percent Change in Farm and Non-Farm Employment from 2001-2011", fig.pos="h">>=
+farmframe<-c("Farm","Farm","Farm","Farm","Non-Farm","Non-Farm","Non-Farm","Non-Farm")
+frame3<-c(-19.0,-23.5,-14.6,-26.8,-4.9,-2.5,-4.2,16.1)
+counties4<-c("Neighboring Counties","Carroll","Guernsey","Holmes")
+frame3<-data.frame(frame3,counties4,farmframe,fill=factor(farmframe))
+s<-ggplot(frame3,aes(x=factor(counties4), y=frame3, fill=factor(farmframe)))
+s<-s+geom_bar(stat="identity",position="dodge")
+s<-s+labs(y="Percent Change", x="")+coord_flip()
+s+theme(legend.position="right",legend.title=element_blank())+theme(plot.margin = unit(c(1,1,1,1), "mm"))+theme(axis.text = element_text(size=7))+theme(legend.text= element_text(size=8))+theme(axis.title = element_text(size=10))
+@
+\pagebreak
+\section{Workflow}
+\begin{flushleft}Not all employees work within their counties of residence. Workflow\footnote{Source: U.S. Census Bureau, 2006-2010 American Community Survey; Residence County to Workplace County Flows for the United States and Puerto Rico Sorted by Residence Geography: 2006-2010} is a statistic, which measures the number of employees that come to a county to work relative to the number that leave the county to work elsewhere. Figure 8 shows that there is a higher total inflow of employees to Holmes County, which indicates that more people travel to Holmes County for work.\end{flushleft} 
+<<echo=FALSE,warning=FALSE,message=FALSE,fig.align='center',fig.height=3, fig.width=4, fig.cap="Total Workflow for Holmes County, 2006 - 2010",fig.pos="h">>=
+frame6<- c(5536,4003)
+label1<- c("Inflow", "Outflow")
+frame6<-data.frame(frame6,label1)
+v<-ggplot(frame6,aes(x=factor(label1), y=frame6))
+v<-v+geom_bar(width=.5, fill="#009AFF",stat="identity", position="dodge")+labs(y="", x="")
+v+theme(axis.text = element_text(size=7))+theme(plot.margin = unit(c(1,1,1,1), "mm"))+scale_y_continuous(label=comma)
+@
+\begin{flushleft}Table 5 provides a detailed listing of counties Holmes County residents travel to for work. As it can be seen in Table 5, Holmes County residents who work outside the county travel to 24 different counties. Overall, Wayne and Tuscarawas County are primary destinations for Holmes County residents. Table 6 shows that over 2,000 workers from Tuscarawas County come to work in Holmes, with another 1,500 coming in from nearby Wayne County.\end{flushleft}
+%\pagebreak
+%\clearpage
+\begin{minipage}[t][7.9cm][c]{18cm}
+<<echo=FALSE,warning=FALSE,message=FALSE,fig.align='center'>>=
+library(ggplot2)
+library(maps)
+library(Hmisc)
+library(mapproj)
+library(grid)
+county_df <- map_data('county')  #mappings of counties by state
+coord <- mapproject(county_df$long,county_df$lat,projection = "lambert", parameters=c(39,42), orientation=c(90,0,-83) )
+county_df$x <- coord$x
+county_df$y <- coord$y
+oh <- subset(county_df, region =="ohio")   #subset just for oh
+oh$county <-oh$subregion
+holmes<-oh[oh$county =="holmes",]
+cnames<-data.frame(subregion=c("Holmes"),x=0.009147824,y=-0.7593184)
+##############################################################
+
+workflow<-oh[oh$county %in% c("ashland", "auglaize","carroll","coshocton","crawford","cuyahoga","delaware","franklin","guernsey", "knox","lake","licking","medina","portage","richland", "stark","summit", "tuscarawas", "union","wayne"),]
+
+data<-c(273,17,45,63,21,2,9,56,13,96,20,27,8,2,148,325,191,523,26,2102)
+
+county<-c("ashland", "auglaize","carroll","coshocton","crawford","cuyahoga","delaware","franklin","guernsey", "knox","lake","licking","medina","portage","richland", "stark","summit", "tuscarawas", "union","wayne")
+
+data<-data.frame(cbind(county,data))
+
+workflow$type<-rep("Holmes County residents working in other counties",308)
+workflow<-merge(workflow,data,by="county")
+
+workflow2<-oh[oh$county %in% c("ashland","carroll","coshocton","crawford","cuyahoga","delaware","guernsey", "harrison","huron","knox","medina","richland", "stark","summit", "tuscarawas", "muskingum","wayne","scioto"),]
+data<-c(257,40,861,2,26,20,54,18,10,160,87,35,332,10,2032,23,1556,13)
+county<-c("ashland","carroll","coshocton","crawford","cuyahoga","delaware","guernsey", "harrison","huron","knox","medina","richland", "stark","summit", "tuscarawas", "muskingum","wayne","scioto")
+
+data<-data.frame(cbind(county,data))
+
+workflow2$type<-rep("Other residents working in Holmes County",282)
+workflow2<-merge(workflow2,data,by="county")
+
+workflow<-rbind(workflow,workflow2)
+workflow$data<-as.numeric(levels(workflow$data))[workflow$data]
+workflow$rate<-cut(workflow$data, breaks =8,labels=c("(0,234]", "(234,468]","(468,701]","(701,935]","(935,1403]","(1403,1636]","(1636,1870]","(1870,2104]"))
+
+p<-ggplot(oh, aes(x, y))+ geom_polygon(aes(group=group), colour='white', fill="#A6CEE3",alpha=0.8,size=0.3)
+p<-p+geom_polygon(data=workflow,aes(group=group), colour="white", fill=NA)+coord_map()+facet_grid (~type)
+p<-p+geom_polygon(data=workflow,aes(group=group,fill=rate),colour="white",size=0.3)+scale_fill_hue(h=c(0,360),l=75)
+p<-p+geom_polygon(data=holmes,colour='white', fill=NA,size=0.1,aes(group=group))+geom_text(data=cnames, aes(label = subregion),colour='black', size=1.8)
+p+theme(panel.grid.major=element_blank(),panel.background=element_blank(),axis.title=element_blank(),axis.text=element_blank(),axis.ticks=element_blank(),strip.text.x = element_text(size=7))+guides(fill = guide_legend(title ="",label.theme = element_text(size=7,angle=360)))
+@
+\end{minipage}
+\begin{table}[htbp]
+\caption{Holmes County Residents Commuting to Other Counties for Work}
+\centering
+\begin{tabular}{lrlr}
+  \toprule
+ County & Number & County & Number \\ 
+  \hline
+Ashland  & 273 & Knox  &  96 \\ 
+Auglaize  &  17 & Lake  &  20  \\ 
+Cabarrus, NC  &  10 & Licking  &  27\\ 
+Calhoun, MI  &   6 & Medina  &   8 \\ 
+Carroll  &  45 & Plaquemines Parish, LA &  12  \\ 
+Coshocton  &  63 & Portage  &   2  \\ 
+Crawford  &  21 & Richland  & 148  \\ 
+Cuyahoga  &   2 & Stark  & 325 \\ 
+Delaware  &   9 & Summit  & 191\\ 
+Franklin  &  56 & Tuscarawas  & 523\\ 
+Guernsey  &  13 & Union  &  26 \\ 
+Kanawha, WV & 8 & Wayne  & 2,102\\ 
+\bottomrule
+\end{tabular}
+\end{table}
+\begin{table}[ht]
+\caption{Residents from Other Counties Commuting to Holmes County for Work}
+\centering
+\begin{tabular}{p{3.25cm}rp{3.25cm}r}
+\toprule
+County & Number & County & Number\\ 
+\hline
+Ashland & 257 & Knox & 160 \\ 
+Carroll& 40 & Medina & 87 \\ 
+Coshocton & 861 & Muskingum & 23 \\ 
+Crawford &  2 & Richland & 35 \\ 
+Cuyahoga & 26 & Scioto & 13 \\ 
+Delaware & 20 & Stark & 332 \\ 
+Guernsey & 54 & Summit & 10 \\ 
+Harrison & 18 & Tuscarawas & 2,032 \\ 
+Huron & 10 & Wayne  & 1,556 \\ 
+\bottomrule
+\end{tabular}
+\end{table}
+\clearpage
+\pagebreak
+\newpage
+\section{Industry Statistics}
+\begin{flushleft} Employment\footnote{Source: U.S. Bureau of Economic Analysis} is classified by the Bureau of Economic Analysis into twenty sectors. However, due to confidentiality, employment and earnings data for some sectors are suppressed. Figure 9 and Table 7 show employment and earnings for each major industry sector in  Holmes County. In 2011, the biggest industry in terms of employment was manufacturing, with over twice as many employed as any other industry. Administrative and waste management services reported the biggest percent change in employment between 2001 and 2011. See Table 7 on page 11.
+\\\begin{flushleft}The average earnings per job was calculated by dividing the total industry earnings by total employment\footnote{Both full-time and part-time jobs are counted at equal weight.} in that industry. Earnings generally include wages and salaries, any supplements such as employer contributions and other funds, and proprietors' income. Figure 9 shows that the highest average earnings per job is in the forestry, fishing, and related activities industry with almost \$60,000 in 2011. Manufacturing, the largest sector in Holmes, reported significantly less, just over \$40,000. The industry with lowest average earnings per jobs was real estate averaging only \$8,247.\end{flushleft}
+<<echo=FALSE,warning=FALSE,message=FALSE,fig.align='center',fig.height=6,fig.width=10,fig.cap="Industry Statistics by Sector, Holmes County, 2011", fig.pos="h">>=
+Employment<-c(1490,1512,203,3066,0,584,481,0,128,0,7501,594,1270,0,777,2436,0,0,1076,1792)
+employment_2000<-c(1342,708,  178,2009,	0,457,344,0,0,95,7552,389,1277,498,434,2448,898,39,795,1652)
+
+Sector<-c("Accommodation and food services","Administrative and waste management services","Arts, Entertainment, and Recreation","Construction","Educational services","Finance and insurance","Forestry, fishing, and related activities","Health care and social assistance","Information","Management of companies and enterprises","Manufacturing","Mining","Other services, except public administration","Professional, scientific, and technical services","Real estate and rental and leasing","Retail trade","Transportation and warehousing","Utilities","Wholesale trade","Government and government enterprises")
+Earnings<-c(14149,30163,9084,51133,0,35293,59852,0,24711,0,40148,15855,33937,0,8247,29632,0,0,36236,49089)
+Percent<-(Employment/employment_2000-1)*100
+frame10<-data.frame(Sector,employment_2000,Employment,Percent,Earnings)
+frame10<-frame10[frame10$Employment>0,]
+frame10$Sector<-reorder(frame10$Sector,frame10$Employment)
+library(ggplot2)
+p<-ggplot(frame10,aes(Employment,Earnings))+geom_point(colour = "red", size = 4)+scale_size(range = c(4, 10))
+p<-p+annotate("text", x = 1000, y = 58000, label = "Forestry, fishing, & related activities",size=3.5)
+p<-p+annotate("text", x = 2400, y = 14200, label = "Accommodation & food svcs.",size=3.5)
+p<-p+annotate("text", x = 1200, y = 28600, label = "Administrative & waste management svcs.",size=3.5)
+p<-p+annotate("text", x = 800, y = 10500, label = "Arts, Entertainment, & Recreation ",size=3.5)
+p<-p+annotate("text", x = 3550, y = 51000, label = "Construction",size=3.5)
+p<-p+annotate("text", x = 594, y = 17000, label = "Mining",size=3.5)
+p<-p+annotate("text", x = 7200, y = 38300, label = "Manufacturing",size=3.5)
+p<-p+annotate("text", x = 584, y = 35000, label = "Finance & insurance",size=3.5)
+p<-p+annotate("text", x = 300, y = 23000, label = "Information",size=3.5)
+p<-p+annotate("text", x = 1470, y = 32700, label = "Other services, except public administration",size=3.5)
+p<-p+annotate("text", x = 1200, y = 7000, label = "Real estate & rental & leasing",size=3.5)
+p<-p+annotate("text", x = 2850, y = 30000, label = "Retail trade",size=3.5)
+p<-p+annotate("text", x = 1076, y = 37800, label = "Wholesale trade",size=3.5)
+p<-p+annotate("text", x = 1792, y = 47000, label = "Government & government enterprises",size=3.5)
+p+theme(axis.text = element_text(size=8))+scale_x_continuous(breaks = seq(0, 7000, by = 1000))+scale_y_continuous(breaks = seq(0, 60000, by = 10000))+ylab("Average Earnings")+scale_y_continuous(label=comma)+scale_x_continuous(label=comma)
+@
+\pagebreak
+\begin{table}[ht]
+\caption{Industry Statistics by Sector, Holmes County}
+\small
+\centering
+\begin{tabular}{p{6.5cm}rrrr}
+\toprule
+Sector & Empl. 2001 & Empl. 2011 & \% Change & Avg. Earnings 2011 \\ 
+\hline
+Total employment &  24,871  &  27,953  & 12.4 &  36,372  \\ 
+ Farm employment &  2,153  &  1,576  & -26.8 &  43,117  \\ 
+ Nonfarm employment &  22,718  &  26,377  & 16.1 &  35,969  \\ 
+  Forestry, fishing, \& related activities &  344  &  481  & 39.8 &  59,852  \\ 
+  Mining &  389  &  594  & 52.7 &  15,855  \\ 
+  Utilities &  39  &  (D)  &  (D)  &  (D)  \\ 
+  Construction &  2,009  &  3,066  & 52.6 &  51,133  \\ 
+  Manufacturing &  7,552  &  7,501  & -0.7 &  40,148  \\ 
+  Wholesale trade &  795  &  1,076  & 35.3 &  36,236  \\ 
+  Retail trade &  2,448  &  2,436  & -0.5 &  29,632  \\ 
+  Transportation \& warehousing &  898  &  (D)  &  (D)  &  (D)  \\ 
+  Information &  (D)  &  128  &  (D)  &  24,711  \\ 
+  Finance \& insurance &  457  &  584  & 27.8 &  35,293  \\ 
+  Real estate \& rental \& leasing &  434  &  777  & 79.0 &  8,247  \\ 
+  Professional, scientific, \& technical svcs. &  498  &  (D)  &  (D)  &  (D)  \\ 
+  Management of companies \& enterprises &  95  &  (D)  &  (D)  &  (D)  \\ 
+  Administrative \& waste management svcs. &  708  &  1,512  & 113.6 &  30,163  \\ 
+  Educational svcs. &  (D)  &  (D)  &  (D)  &  (D)  \\ 
+  Health care \& social assistance &  (D)  &  (D)  &  (D)  &  (D)  \\ 
+  Arts, entertainment, \& recreation &  178  &  203  & 14.0 &  9,084  \\ 
+  Accommodation \& food svcs. &  1,342  &  1,490  & 11.0 &  14,149  \\ 
+  Other svcs., except public administration &  1,277  &  1,270  & -0.5 &  33,937  \\ 
+  Government \& government enterprises &  1,652  &  1,792  & 8.5 &  49,089  \\ 
+\bottomrule
+\end{tabular}
+\end{table}
+\footnotesize{\textit{(D) Not shown to avoid disclosure of confidential information, but the estimates are included in the totals.}}
+\\\section{Income}
+
+\normalsize{\begin{flushleft}Median household income\footnote{Source: U.S. Census Bureau, American Community Survey: 2009 - 2011} is an important indicator in assessing economic prosperity and wealth of households. Table 8 shows that Holmes County had a median household income of \$43,371, very close to Ashland County.\end{flushleft}
+\begin{table}[!htbp]
+\caption{Median Household Income: 2009 - 2011}
+\centering
+\begin{tabular}{lrr}
+  \toprule
+ County & Median Household Income & Rank\\ 
+  \hline
+Holmes &  43,371 & 5\\ 
+Carroll &  41,345 &  7\\ 
+Guernsey &  37,654 & 9\\ 
+Ashland &  43,792  & 4\\ 
+Coshocton &  39,141 & 8\\ 
+Knox &  50,529  & 1\\ 
+Stark &  43,883 & 3\\ 
+Tuscarawas &  41,877 & 6\\ 
+Wayne &  47,861  & 2\\ 
+   \bottomrule
+\end{tabular}
+\end{table}
+
+\begin{flushleft}Per capita income\footnote{Source: U.S. Bureau of Economic Analysis} or average income per person can be used as another way to evaluate and compare quality of life  and living conditions of general population. \end{flushleft}
+<<echo=FALSE,warning=FALSE,message=FALSE,fig.align='center', fig.height=3.3, fig.width=4,fig.cap="Percent Change in Per Capita Income, 2000-2011,",fig.pos="h">>=
+frame12<-c(44.2,20.9,47.4,29.2)
+counties2<-c("Holmes","Carroll","Guernsey","Neighboring Counties")
+frame12<-data.frame(frame12,counties2)
+b<-ggplot(frame12,aes(x=factor(counties2), y=frame12))
+b<-b+geom_bar(fill="#009AFF",stat="identity", position="dodge")+labs(y="Percent Change", x="")
+b+theme(axis.text = element_text(size=8))+theme(plot.margin = unit(c(1,1,1,1), "mm"))+theme(axis.title = element_text(size=10))
+@
+\newline
+\begin{flushleft}Figure 10 above shows that Guernsey and Holmes Counties saw the largest increases in per capita income from 2000 to 2011 with 47.4 percent and 44.2 percent increases respectively. Table 9 below shows that the neighboring county region maintained the highest per capita income in 2011 by almost \$3,000 even though they experienced lower growth than Guernsey and Holmes. Carroll County had both the lowest growth from 2000 to 2011 as well as the smallest per capita income in 2011. In general, care should be exercised when interpreting these numbers as they are in current dollars (i.e., not adjusted for inflation).\end{flushleft}
+\begin{table}[htbp]
+\caption{2011 Per Capita Income}
+\centering
+\begin{tabular}{rlr}
+  \toprule
+ & Area & Per Capita Income \\ 
+  \hline
+ & Holmes & \$27,523 \\ 
+& Carroll & \$27,044 \\ 
+& Guernsey & \$29,955 \\ 
+& Neighboring Counties & \$32,992 \\ 
+   \bottomrule
+\end{tabular}
+\end{table}
+\newline
+\pagebreak
+\section{Taxable Value of Real Property}
+\begin{flushleft} According to Ohio Department of Taxation\footnote{More at http://www.tax.ohio.gov/tax\_analysis/tax\_data\_series/publications\_tds\_property/PD31CY11.aspx}, all real property (except railroad property) in Ohio is classified by county auditors into one of five categories. These categories are residential, agricultural, industrial, commercial, and mineral. Figure 11 shows that Holmes County has seen the largest increase in the taxable value of real property from 2000 to 2011. The 67.3 percent increase is almost 7.0 percent higher than the second largest increase, in Carroll County, and corresponds to a monetary value of \$309,085,750. The neighboring county region had a significantly smaller increase with only 37.9 percent growth in value. As before, care should be exercised when interpreting these numbers as they are in current dollars (i.e., not adjusted for inflation).\end{flushleft}
+<<echo=FALSE,warning=FALSE,message=FALSE,fig.align='center', fig.height=3.5,fig.width=4.2, fig.cap="Percent Change in Taxable Value of Real Property, 2000-2011",fig.pos="h">>=
+frame11<-c(67.3,60.4,56.1,37.9)
+counties2<-c("Holmes","Carroll","Guernsey","Neighboring Counties")
+frame11<-data.frame(frame11,counties2)
+a<-ggplot(frame11,aes(x=factor(counties2), y=frame11))
+a<-a+geom_bar(fill="#009AFF",stat="identity", position="dodge")+labs(y="Percent Change", x="")
+a+theme(axis.text = element_text(size=8))+theme(plot.margin = unit(c(1,1,1,1), "mm"))+theme(axis.title = element_text(size=10))
+@
+\newline
+\section{Occupational Profile}
+\begin{flushleft} This section of the report presents occupational employment statistics for Holmes County and its peers. The data comes from MIG, Inc., creators of IMPLAN, an economic modeling system. MIG uses occupational matrices compiled by the U.S. Bureau of Labor Statistics, which makes it possible to convert MIG's industry employment numbers into occupational estimates. Figure 12 and Table 10 below show employment in the region by major occupational categories\footnote{More at http://www.bls.gov/soc/soc\_structure\_2010.pdf}. Overall, data show that production related occupations along with office and administrative support occupations account for more than 30 percent of all employment in Holmes County. In Carroll, Guernsey and other neighboring counties, services related occupations are the biggest category followed by the office and administrative support occupations.
+\pagebreak
+\newpage
+\clearpage
+<<echo=FALSE,warning=FALSE,message=FALSE,fig.align='center', fig.height=5.8,fig.width=9.6,fig.cap="Employment by Major Occupational Categories, Holmes County: 2011">>=
+library(reshape2)
+library(ggplot2)
+occup<-c( 2294,810,1076,413,3151,2327,3736,1009,2416,1412,4427,2843) 
+family<-c("Management, Business, and Financial ", "Computer, Engineering, and Science ","Education, Legal, Community Service, Arts, and Media ",  "Healthcare Practitioners and Technical ", "Service ",	"Sales and Related ", "Office and Administrative Support ", "Farming, Fishing, and Forestry ",	"Construction and Extraction ",	"Installation, Maintenance, and Repair ",	"Production ","Transportation and Material Moving ")
+occup<-data.frame(occup,family)
+occup$per<-c(8.9,3.1,4.2,1.6,12.2,9.0,14.4,3.9,9.3,5.4,17.1,11.0)
+occup$family<-reorder(occup$family,occup$occup)
+occup<-melt(data=occup,id.vars="family")
+x<-ggplot(occup,aes(x=factor(family), y=value))
+x+geom_bar(fill="#009AFF",stat="identity", position="dodge")+labs( y="", x="")+coord_flip()+scale_y_continuous(label=comma)
+@
+\newline
+\begin{table}[!htbp]
+\caption{Employment by Major Occupational Categories: 2011}
+\small
+\centering
+\begin{tabular}{lrrrr}
+  \toprule
+ Occupation & Holmes \% & Carroll \% & Guernsey \% & Neighboring Counties \% \\ 
+  \hline
+Production  & 17.1 & 9.1 & 8.9 & 9.3 \\ 
+Office \& Administrative Support  & 14.4 & 14.8 & 15.9 & 16.7 \\ 
+Service  & 12.2 & 18.4 & 20.4 & 19.1 \\ 
+Transportation \& Material Moving  & 11.0 & 11.8 & 7.7 & 7.1 \\ 
+Construction \& Extraction  & 9.3 & 8.0 & 6.1 & 5.1 \\ 
+Sales \& Related  & 9.0 & 7.9 & 9.7 & 9.7 \\ 
+Management, Business, \& Financial  & 8.9 & 9.6 & 8.6 & 9.6 \\ 
+Installation, Maintenance, \& Repair  & 5.4 & 6.1 & 5.3 & 5.0 \\ 
+Education, Legal, Community Service, Arts  & 4.2 & 4.0 & 5.8 & 6.9 \\ 
+Farming, Fishing, \& Forestry  & 3.9 & 4.0 & 2.2 & 1.4 \\ 
+Computer, Engineering, \& Science  & 3.1 & 3.2 & 3.8 & 4.5 \\ 
+Healthcare Practitioners \& Technical  & 1.6 & 3.0 & 5.6 & 5.4 \\ 
+   \bottomrule
+\end{tabular}
+\end{table}
+\pagebreak
+\section{Conclusion}
+\begin{flushleft}Based upon the data collected for this report, Holmes County compares favorably to both its neighboring counties as well as nearby counties with similar demographic profiles in terms of economic growth. Over the last ten years, Holmes County has seen a net increase in its population enjoying the lowest unemployment rate in the region. Holmes County also reported positive increases in both employment and in the number of workers coming from other counties. Manufacturing remained the largest industrial sector in Holmes County accounting for approximately 27 percent of total employment. At the same time, approximately 17 percent of labor force were engaged in production related occupations, the largest occupational category in the county. Finally, Holmes County reported the second highest increase in per capita income, and the largest increase in the taxable value of real property.\end{flushleft}
+\newpage
+\renewcommand\bibname{References}
+\begin{thebibliography}{3}
+\bibitem{notes} Populations Estimates; U.S. Department of Commerce, Bureau of Economic Analysis, Regional Income Division, available at \url{\texttt{http://bea.gov/}}
+
+\bibitem{impj} IRS Net Migration Flows of Exemptions, By County: 2000 - 2009; The Internal Service (IRS), Statistics of Income Division, available at \url{\texttt{http://development.ohio.gov/reports/reports\_pop\_est.htm}}
+
+\bibitem {a} Civilian Labor Force Estimates, Local Area Unemployment Statistics; U.S. Department of Commerce, Bureau of Labor Statistics, available at \url{\texttt{http://www.bls.gov/lau/}}
+
+\bibitem {a} Residence County to Workplace County Flows for the United States and Puerto Rico Sorted by Residence Geography: 2006-2010; U.S. Census Bureau, 2006-2010 American Community Survey, available at \url{\texttt{http://www.census.gov/}}
+
+\bibitem {a} Median Income in the Past 12 Months; U.S. Census Bureau, 2009-2011 American Community Survey, available at \url{\texttt{http://www.census.gov/}}
+
+\bibitem{notes} CA25N Total Full-Time and Part-Time Employment by NAICS Industry; U.S. Department of Commerce, Bureau of Economic Analysis, Regional Income Division, available at \url{\texttt{http://bea.gov/}}
+
+\bibitem{notes} CA05N Personal Income by Major Source and Earnings by NAICS industry; U.S. Department of Commerce, Bureau of Economic Analysis, Regional Income Division, available at \url{\texttt{http://bea.gov/}}
+
+\bibitem{notes} Taxable Value of real Property by Class of Property and County, Calendar Year 2011; Ohio Department of Taxation, available at \url{\texttt{http://www.tax.ohio.gov/}}
+
+\bibitem{notes} MIG, Inc., IMPLAN System (data and software), 502 2nd Street, Suite 301, Hudson, WI 54016 \url{\texttt{http://www.implan.com/}}
+
+\end{thebibliography}
+
+\end{document}

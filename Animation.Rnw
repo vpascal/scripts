@@ -1,0 +1,19 @@
+\documentclass{article}
+\usepackage{animate}
+\begin{document}
+
+
+<<echo=FALSE,warning=FALSE,message=FALSE,fig.show='animate',fig.height=5,fig.width=4,fig.pos="h",crop=TRUE>>=
+
+library(rgl)
+library(GA)
+x<-1:5
+y<-3:6
+datanew<-matrix(c(5, 14,	22,	30,35,11,30,60,81,84,18,50,80,107,130,24,74,99,125,144),nrow=5, ncol=4)
+for(i in seq(from=10,to=360,by=20)){
+persp(x,y,datanew, main="Production Surface", xlab="L(labor)",ylab="K (capital)",zlab="Output", color.palette = heat.colors, phi = 30, box = TRUE, theta=i, border = NA, shade = .4)
+}
+@
+
+
+\end{document}

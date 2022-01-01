@@ -1,0 +1,14 @@
+# changing file extension in windows from .impdb to .mdb
+
+ren *.impdb *.mdb
+
+####### getting unique results in Linux
+
+cat sample.txt | sort | uniq -c
+
+########## longer example  grep -v invert matching. in this case it select record that do not contain ""
+# uniq -c  ---- counts
+
+$ cat ppc_data_sample.txt | grep -v '"' | cut -d, -f2 | sort | uniq -c | sort -k2
+
+

@@ -1,0 +1,18 @@
+\documentclass{article}
+
+\begin{document}
+
+<<crop-hook, cache=FALSE>>=
+knit_hooks$set(crop=hook_pdfcrop)
+@
+
+<<pdf-crop, fig.height=3,crop=TRUE>>=
+plot(runif(10))
+@
+
+<<fig.height=3>>=
+plot(runif(10))
+@
+
+
+\end{document}
