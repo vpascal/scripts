@@ -1,0 +1,332 @@
+
+---
+title: "Student Advising"
+output: 
+  html_document: 
+    css: w3.css
+    fig_height: 7
+    fig_width: 10
+    theme: flatly
+---
+
+<div id="header">
+<p> By Vlad Pascal</p>
+</div>
+
+<style>
+
+#header{
+    
+    border-bottom: 1px solid #ddd;
+
+}
+
+</style>
+
+<br>
+
+Providing good academic advising is extremely important to the long-term success of the Patton College and Ohio University. The advisors serve as a vital link between students and the College. To streamline the data collection process and to better evaluate the impact and the quality of academic advising, Office of Student Affairs administers two surveys. First, students complete an intake form, which collects relevant academic information about students and the reasons for their appointment. This form is completed by all students. At the end of the advising session, students also receive an invitation to complete an exit survey. This survey focuses on the quality of the academic advising. Even though students are encouraged to provide feedback about the appointments, this survey is optional. We begin by presenting the results of the intake survey and then proceed to the results of exit survey.
+
+<br>
+
+# Intake Survey
+
+The intake survey provides the most comprehensive information about incoming students who attend Student Affairs advising sessions.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message= FALSE, warning=FALSE, comment="")
+
+```
+ 
+```{r}
+
+library(dplyr)
+library(readr)
+library(tidyr)
+library(htmlTable)
+library(googleVis)
+library(shiny)
+library(likert)
+op <- options(gvis.plot.tag='chart')
+
+########### Loading the data
+
+data <- read_csv("Advising_Survey.csv",skip = 1)[c(9,11:28)]
+data <- data[,-5]
+
+fall <- read_csv("Enrolled Students by Term.csv")[c(13,15:33)]
+
+########### Cleaning
+
+names(data) <- c("Date","Fname","Lname", "PID","Standing","Standing_O","Advisor","Advisor_O","Prospective visit","Academic Advising","Academic Probation", "Praxis Core","Ohio Assessments for Educators","Admission to Teacher Candidacy","Admission to Advanced Standing","Admission to Professional Internship","Other Reason","Other_Text")
+
+data$Date <- as.POSIXct(strptime(data$Date, "%Y-%m-%d %H:%M:%S"))
+data$Date <- as.Date(format(data$Date,"%Y-%m-%d"))
+data$Fname <- tolower(data$Fname);data$Lname <- tolower(data$Lname)
+
+pattern <- grep("test|toretch|moeller", data$Lname)
+data <- data[- pattern,]
+temp <- which(apply(data[,2:18],1, function(x) all(is.na(x))))
+data <- data[-temp,]
+
+data$fullname <- paste0(data$Fname, data$Lname)
+data <- data %>% group_by(Date, fullname) %>% distinct(.keep_all = T)
+
+#fixing PIDs
+
+pattern <-grep("^[0-9]", data$PID)
+data$PID[pattern] <- paste0("P",data$PID[pattern])
+data$PID <- toupper(data$PID)
+###############################
+```
+
+<style>
+.w3-card-2 {border-radius: 3px 3px 3px 3px; background-color: white;}
+ header {border-radius: 3px 3px 0px 0px;}
+ .center{margin: 0 auto;}
+ blockquote {font-weight italic;}
+</style>
+
+<div class="w3-row-padding"> <div class="w3-third" id="first">
+<div class="w3-card-2  w3-animate-left">
+<header class="w3-container w3-deep-purple">
+  <h1></h1>
+</header>
+<div class="w3-container">
+
+```{r}
+
+# total number of students/visits, unduplicated count of students, and duplicates
+
+
+h1(nrow(data)) 
+h4 ("Total number of student visits during Fall semester 2015-2016")
+
+```
+</div></div></div>
+<div class="w3-third" id="second">
+<div class="w3-card-2 w3-animate-bottom">
+<header class="w3-container w3-deep-purple">
+  <h1></h1>
+</header>
+<div class="w3-container">
+
+```{r}
+
+# total number of students/visits, unduplicated count of students, and duplicates
+
+shiny:: h1(length(unique(data$fullname)))
+shiny::h4("Unduplicated number of students during Fall semester 2015-2016")
+
+```
+</div></div></div>
+
+<div class="w3-third" id="third">
+<div class="w3-card-2 w3-animate-right">
+<header class="w3-container w3-deep-purple">
+  <h1></h1>
+</header>
+<div class="w3-container">
+
+```{r}
+
+# total number of students/visits, unduplicated count of students, and duplicates
+
+shiny:: h1(sum(duplicated(data$fullname)))
+shiny::h4("Number of students who used Student Affairs more than once.")
+
+
+```
+
+</div></div></div></div>
+
+<br>
+
+```{r results="asis"}
+# mothly visits
+
+temp <- data %>% group_by(Month=months(Date))%>% 
+  summarise(Visits=round(n()/1682*100,1)) %>% 
+  arrange(desc(Visits))
+
+plot(gvisColumnChart(temp,xvar="Month",yvar="Visits",options=list(title="Breakdown by Month in (%)",
+                                                      titleTextStyle="{
+                                                                      fontName:'Verdana', 
+                                                                      fontSize:18}",
+                                                      colors="['FA1E64']"             
+                                                                     )))
+
+```
+* November and October are the busiest months; together they account for 68 percent of all visits.
+<br>
+```{r results="asis"}
+
+#Visits by academic level
+temp_1 <- data %>% group_by(Standing) %>% summarise(Visits=round(n()/1682*100,1)) %>% arrange(desc(Visits))
+
+plot(gvisColumnChart(temp_1,xvar="Standing",yvar="Visits", options=list(title="Breakdown by Academic Standing in (%)",
+titleTextStyle="{
+fontName:'Verdana', 
+fontSize:18}",
+colors="['FA1E64']"
+)))
+
+```
+
+* Freshmen and Sophomore account for almost two thirds of all visits.
+<br>
+<div class="center" style="width:55%">
+<br>
+```{r}
+
+# visit by college, major, etc
+
+temp <-left_join(data,fall,by="PID")  
+
+htmlTable(
+temp %>% dplyr::filter(!is.na(`Dept/School`)) %>% 
+  group_by(`Dept/School`) %>% 
+  summarise(Visits=n()) %>% 
+  arrange(desc(Visits)) %>%
+  rename(Department = `Dept/School`) %>% 
+  top_n(6), rnames=FALSE,align='l r',align.header='l r',
+  caption="Table 1: Breakdown by Department, Top 6")
+  
+```
+</div>
+<br>
+* Teacher Education, the largest department in the Patton College, accounts for the highest number of visits.
+
+```{r results="asis"}
+
+temp_3 <- temp %>% dplyr::filter(!is.na(`Mjr/Min/Cert`)) %>% 
+  group_by(`Mjr/Min/Cert`) %>% 
+  summarise(Visits=n()) %>% 
+  arrange(desc(Visits)) %>% 
+  top_n(10) %>% 
+  rename(Major=`Mjr/Min/Cert`)
+
+plot(gvisBarChart(temp_3,xvar="Major",yvar="Visits", options=list(title="Breakdown by Academic Major: Top 10",
+titleTextStyle="{
+fontName:'Verdana', 
+fontSize:18}",
+colors="['FA1E64']",
+width=900, height=500,
+chartArea="{left:250,top:50, width:\"50%\",height:\"80%\"}"
+)))
+
+```
+* Pre Early Childhood along with Early Childhood and Integrated Language Arts are the top three academic majors.
+
+<br>
+<div class="center" style="width:55%">
+```{r fig.align='center'}
+
+# Reason for visits
+temp <- data %>% gather("Reason","Type",9:17)
+htmlTable(
+  temp %>% dplyr::filter(!is.na(Type)) %>%
+  group_by(Type) %>% 
+  summarise(Visits=n()) %>% 
+  mutate(Percent=round(Visits/sum(Visits)*100,1)) %>% 
+  arrange(desc(Percent)),
+  rnames=FALSE,
+  align='l r',
+  align.header='l r')
+
+```
+<br>
+</div>
+* Academic advising makes up almost 74 percent of all visits.
+* The Other category includes things such as graduation checks, information about changing majors/college and information about transfers.
+
+<br>
+
+# Exit Survey
+
+As mentioned before, the exit survey focuses on the quality of advising sessions and on the suggestion to improve them.
+A total of 268 respondents have participated in the survey since October of 2015. Students were first asked to what extent they agree with following items.
+
+```{r echo=FALSE, dev = "svg", fig.ext = ".svg"}
+
+exit <- read_csv("Advising_Survey__Exit.csv",skip = 1)[c(11,43:62)]
+vars <- names(read_csv("Advising_Survey__Exit.csv")[c(11,43:62)])
+names(exit) <- vars
+
+temp <- exit[,2:13]
+
+recode <- function(x){
+switch(as.character(x),  
+"6_1" = "The front desk staff assisted me promptly in a friendly manner.",
+"6_2" = "The Student Affairs environment is welcoming and student centered.",
+"6_3" = "My appointment started on time.",
+'6_4' = "I was welcomed personally to my advising appointment.",
+"6_5" = "Student Affairs staff member listened to me.",
+'6_6' = "He/she effectively addressed my questions and concerns.",
+"6_7" = "I was asked questions that helped me explore and/or discover my personal strengths and academic goals.",
+"6_8" = "I left the advising appointment with goals and an action plan that will help me reach them.",
+"6_9" = "Student Affairs staff member is positive and supportive.",
+"6_10" = "He/she is knowledgeable about Patton College of Education Requirements.",
+"6_11" = "He/she is knowledgeable about Campus Resources.",
+"6_12" = "I am satisfied with the academic advising I have received from Student Affairs staff member."
+)
+}
+names(temp)<- sapply(names(temp),recode)
+temp <- temp[complete.cases(temp),]
+
+temp <- as.data.frame(temp)
+temp[1:12]<- lapply(temp[1:12], factor, levels=c("Strongly Disagree","Disagree","Agree","Strongly Agree"))
+
+a <- likert(temp)
+plot(a, text.size=4, colors=c("#FF2AAA","#FF7FFF","#2AAAFF","#0055FF"))+theme(text = element_text(size=14))
+```
+
+Further, students were asked how they prepare for the advising appointment.
+
+```{r echo=FALSE, results="asis"}
+
+vars <- exit %>%  select(`7_4`:`7_9`) %>% sapply(unique) %>%  na.omit() %>% unname()
+temp <- exit %>%  select(`7_4`:`7_9`)
+names(temp) <- vars 
+
+temp <- temp %>% 
+  gather(Activities,N,1:6) %>% 
+  na.omit() %>% 
+  group_by(Activities) %>% 
+  summarise(Total=n()) %>% 
+  mutate(percent=round(Total/sum(Total)*100,1)) %>% 
+  select(-Total) %>% 
+  arrange(desc(percent))
+  
+plot(gvisBarChart(temp,xvar="Activities",yvar="percent",  options=list(title="To prepare for my advising appointment, I ",
+titleTextStyle="{
+fontName:'Verdana', 
+fontSize:18}",
+colors="['FA1E64']",
+width=900, height=400,
+chartArea="{left:250,top:50, width:\"50%\",height:\"77%\"}"
+)))
+
+```
+
+* In most cases, students come already prepared to the advising sessions: they review their DARS, explore possible courses, talk to their peers, etc. In fact, only in 3.6 percent of all appointments, students did nothing. 
+
+<br>
+Finally, respondents were asked to provide additional comments. Of 100 students who responded to this question, all expressed gratitude, enthusiasm and appreciation for the work done by Students Affairs advisors.
+
+> "I really liked my advising appointment today, it was a great experience."
+
+> "My appointment was extremely helpful, it helped relieve me of a lot of stress!"
+
+> "Very pleased. I left confident with no confusion!"   
+
+> "My advising appointments always go very well!"
+
+<style>
+blockquote {
+font-family: Sans;
+font-style: italic;
+font-size: 1.8em;
+color: #8C8A8A;
+}
+</style>

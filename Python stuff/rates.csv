@@ -1,0 +1,469 @@
+Level,Taught by,Credits,Class Size,Pay
+Undergraduate,Group III: PHD,1,1,$89 
+Undergraduate,Group III: PHD,1,2,$178 
+Undergraduate,Group III: PHD,1,3,$267 
+Undergraduate,Group III: PHD,1,4,$356 
+Undergraduate,Group III: PHD,1,5,$445 
+Undergraduate,Group III: PHD,1,6,$534 
+Undergraduate,Group III: PHD,1,7,$623 
+Undergraduate,Group III: PHD,1,8,$712 
+Undergraduate,Group III: PHD,1,9,$801 
+Undergraduate,Group III: PHD,1,10,$890 
+Undergraduate,Group III: PHD,1,11,$979 
+Undergraduate,Group III: PHD,1,12,"$1,068 "
+Undergraduate,Group III: PHD,1,13,"$1,075 "
+Undergraduate,Group III: PHD,2,1,$178 
+Undergraduate,Group III: PHD,2,2,$356 
+Undergraduate,Group III: PHD,2,3,$534 
+Undergraduate,Group III: PHD,2,4,$712 
+Undergraduate,Group III: PHD,2,5,$890 
+Undergraduate,Group III: PHD,2,6,"$1,068 "
+Undergraduate,Group III: PHD,2,7,"$1,245 "
+Undergraduate,Group III: PHD,2,8,"$1,423 "
+Undergraduate,Group III: PHD,2,9,"$1,601 "
+Undergraduate,Group III: PHD,2,10,"$1,779 "
+Undergraduate,Group III: PHD,2,11,"$1,957 "
+Undergraduate,Group III: PHD,2,12,"$2,135 "
+Undergraduate,Group III: PHD,2,13,"$2,150 "
+Undergraduate,Group III: PHD,3,1,$267 
+Undergraduate,Group III: PHD,3,2,$534 
+Undergraduate,Group III: PHD,3,3,$801 
+Undergraduate,Group III: PHD,3,4,"$1,068 "
+Undergraduate,Group III: PHD,3,5,"$1,334 "
+Undergraduate,Group III: PHD,3,6,"$1,601 "
+Undergraduate,Group III: PHD,3,7,"$1,868 "
+Undergraduate,Group III: PHD,3,8,"$2,135 "
+Undergraduate,Group III: PHD,3,9,"$2,402 "
+Undergraduate,Group III: PHD,3,10,"$2,669 "
+Undergraduate,Group III: PHD,3,11,"$2,936 "
+Undergraduate,Group III: PHD,3,12,"$3,203 "
+Undergraduate,Group III: PHD,3,13,"$3,225 "
+Undergraduate,Group III: PHD,4,1,$356 
+Undergraduate,Group III: PHD,4,2,$712 
+Undergraduate,Group III: PHD,4,3,"$1,068 "
+Undergraduate,Group III: PHD,4,4,"$1,424 "
+Undergraduate,Group III: PHD,4,5,"$1,780 "
+Undergraduate,Group III: PHD,4,6,"$2,136 "
+Undergraduate,Group III: PHD,4,7,"$2,492 "
+Undergraduate,Group III: PHD,4,8,"$2,848 "
+Undergraduate,Group III: PHD,4,9,"$3,204 "
+Undergraduate,Group III: PHD,4,10,"$3,560 "
+Undergraduate,Group III: PHD,4,11,"$3,916 "
+Undergraduate,Group III: PHD,4,12,"$4,272 "
+Undergraduate,Group III: PHD,4,13,"$4,300 "
+Undergraduate,Group III: MA,1,1,$89 
+Undergraduate,Group III: MA,1,2,$178 
+Undergraduate,Group III: MA,1,3,$267 
+Undergraduate,Group III: MA,1,4,$356 
+Undergraduate,Group III: MA,1,5,$445 
+Undergraduate,Group III: MA,1,6,$534 
+Undergraduate,Group III: MA,1,7,$623 
+Undergraduate,Group III: MA,1,8,$712 
+Undergraduate,Group III: MA,1,9,$801 
+Undergraduate,Group III: MA,1,10,$890 
+Undergraduate,Group III: MA,1,11,$979 
+Undergraduate,Group III: MA,1,12,"$1,000 "
+Undergraduate,Group III: MA,1,13,"$1,000 "
+Undergraduate,Group III: MA,2,1,$178 
+Undergraduate,Group III: MA,2,2,$356 
+Undergraduate,Group III: MA,2,3,$534 
+Undergraduate,Group III: MA,2,4,$712 
+Undergraduate,Group III: MA,2,5,$890 
+Undergraduate,Group III: MA,2,6,"$1,068 "
+Undergraduate,Group III: MA,2,7,"$1,245 "
+Undergraduate,Group III: MA,2,8,"$1,423 "
+Undergraduate,Group III: MA,2,9,"$1,601 "
+Undergraduate,Group III: MA,2,10,"$1,779 "
+Undergraduate,Group III: MA,2,11,"$1,957 "
+Undergraduate,Group III: MA,2,12,"$2,000 "
+Undergraduate,Group III: MA,2,13,"$2,000 "
+Undergraduate,Group III: MA,3,1,$267 
+Undergraduate,Group III: MA,3,2,$534 
+Undergraduate,Group III: MA,3,3,$801 
+Undergraduate,Group III: MA,3,4,"$1,068 "
+Undergraduate,Group III: MA,3,5,"$1,334 "
+Undergraduate,Group III: MA,3,6,"$1,601 "
+Undergraduate,Group III: MA,3,7,"$1,868 "
+Undergraduate,Group III: MA,3,8,"$2,135 "
+Undergraduate,Group III: MA,3,9,"$2,402 "
+Undergraduate,Group III: MA,3,10,"$2,669 "
+Undergraduate,Group III: MA,3,11,"$2,936 "
+Undergraduate,Group III: MA,3,12,"$3,000 "
+Undergraduate,Group III: MA,3,13,"$3,000 "
+Undergraduate,Group III: MA,4,1,$356 
+Undergraduate,Group III: MA,4,2,$712 
+Undergraduate,Group III: MA,4,3,"$1,068 "
+Undergraduate,Group III: MA,4,4,"$1,424 "
+Undergraduate,Group III: MA,4,5,"$1,780 "
+Undergraduate,Group III: MA,4,6,"$2,136 "
+Undergraduate,Group III: MA,4,7,"$2,492 "
+Undergraduate,Group III: MA,4,8,"$2,848 "
+Undergraduate,Group III: MA,4,9,"$3,204 "
+Undergraduate,Group III: MA,4,10,"$3,560 "
+Undergraduate,Group III: MA,4,11,"$3,916 "
+Undergraduate,Group III: MA,4,12,"$4,000 "
+Undergraduate,Group III: MA,4,13,"$4,000 "
+Undergraduate,Group III: Other,1,1,$89 
+Undergraduate,Group III: Other,1,2,$178 
+Undergraduate,Group III: Other,1,3,$267 
+Undergraduate,Group III: Other,1,4,$356 
+Undergraduate,Group III: Other,1,5,$445 
+Undergraduate,Group III: Other,1,6,$534 
+Undergraduate,Group III: Other,1,7,$623 
+Undergraduate,Group III: Other,1,8,$712 
+Undergraduate,Group III: Other,1,9,$801 
+Undergraduate,Group III: Other,1,10,$890 
+Undergraduate,Group III: Other,1,11,$890 
+Undergraduate,Group III: Other,1,12,$890 
+Undergraduate,Group III: Other,1,13,$890 
+Undergraduate,Group III: Other,2,1,$178 
+Undergraduate,Group III: Other,2,2,$356 
+Undergraduate,Group III: Other,2,3,$534 
+Undergraduate,Group III: Other,2,4,$712 
+Undergraduate,Group III: Other,2,5,$890 
+Undergraduate,Group III: Other,2,6,"$1,068 "
+Undergraduate,Group III: Other,2,7,"$1,245 "
+Undergraduate,Group III: Other,2,8,"$1,423 "
+Undergraduate,Group III: Other,2,9,"$1,601 "
+Undergraduate,Group III: Other,2,10,"$1,779 "
+Undergraduate,Group III: Other,2,11,"$1,780 "
+Undergraduate,Group III: Other,2,12,"$1,780 "
+Undergraduate,Group III: Other,2,13,"$1,780 "
+Undergraduate,Group III: Other,3,1,$267 
+Undergraduate,Group III: Other,3,2,$534 
+Undergraduate,Group III: Other,3,3,$801 
+Undergraduate,Group III: Other,3,4,"$1,068 "
+Undergraduate,Group III: Other,3,5,"$1,334 "
+Undergraduate,Group III: Other,3,6,"$1,601 "
+Undergraduate,Group III: Other,3,7,"$1,868 "
+Undergraduate,Group III: Other,3,8,"$2,135 "
+Undergraduate,Group III: Other,3,9,"$2,402 "
+Undergraduate,Group III: Other,3,10,"$2,669 "
+Undergraduate,Group III: Other,3,11,"$2,670 "
+Undergraduate,Group III: Other,3,12,"$2,670 "
+Undergraduate,Group III: Other,3,13,"$2,670 "
+Undergraduate,Group III: Other,4,1,$356 
+Undergraduate,Group III: Other,4,2,$712 
+Undergraduate,Group III: Other,4,3,"$1,068 "
+Undergraduate,Group III: Other,4,4,"$1,424 "
+Undergraduate,Group III: Other,4,5,"$1,780 "
+Undergraduate,Group III: Other,4,6,"$2,136 "
+Undergraduate,Group III: Other,4,7,"$2,492 "
+Undergraduate,Group III: Other,4,8,"$2,848 "
+Undergraduate,Group III: Other,4,9,"$3,204 "
+Undergraduate,Group III: Other,4,10,"$3,560 "
+Undergraduate,Group III: Other,4,11,"$3,560 "
+Undergraduate,Group III: Other,4,12,"$3,560 "
+Undergraduate,Group III: Other,4,13,"$3,560 "
+Graduate: MA,Group III: PHD,1,1,$111 
+Graduate: MA,Group III: PHD,1,2,$222 
+Graduate: MA,Group III: PHD,1,3,$334 
+Graduate: MA,Group III: PHD,1,4,$445 
+Graduate: MA,Group III: PHD,1,5,$556 
+Graduate: MA,Group III: PHD,1,6,$667 
+Graduate: MA,Group III: PHD,1,7,$778 
+Graduate: MA,Group III: PHD,1,8,$890 
+Graduate: MA,Group III: PHD,1,9,"$1,001 "
+Graduate: MA,Group III: PHD,1,10,"$1,075 "
+Graduate: MA,Group III: PHD,1,11,"$1,075 "
+Graduate: MA,Group III: PHD,1,12,"$1,075 "
+Graduate: MA,Group III: PHD,1,13,"$1,075 "
+Graduate: MA,Group III: PHD,2,1,$222 
+Graduate: MA,Group III: PHD,2,2,$445 
+Graduate: MA,Group III: PHD,2,3,$667 
+Graduate: MA,Group III: PHD,2,4,$890 
+Graduate: MA,Group III: PHD,2,5,"$1,112 "
+Graduate: MA,Group III: PHD,2,6,"$1,334 "
+Graduate: MA,Group III: PHD,2,7,"$1,557 "
+Graduate: MA,Group III: PHD,2,8,"$1,779 "
+Graduate: MA,Group III: PHD,2,9,"$2,002 "
+Graduate: MA,Group III: PHD,2,10,"$2,150 "
+Graduate: MA,Group III: PHD,2,11,"$2,150 "
+Graduate: MA,Group III: PHD,2,12,"$2,150 "
+Graduate: MA,Group III: PHD,2,13,"$2,150 "
+Graduate: MA,Group III: PHD,3,1,$334 
+Graduate: MA,Group III: PHD,3,2,$667 
+Graduate: MA,Group III: PHD,3,3,"$1,001 "
+Graduate: MA,Group III: PHD,3,4,"$1,334 "
+Graduate: MA,Group III: PHD,3,5,"$1,668 "
+Graduate: MA,Group III: PHD,3,6,"$2,002 "
+Graduate: MA,Group III: PHD,3,7,"$2,335 "
+Graduate: MA,Group III: PHD,3,8,"$2,669 "
+Graduate: MA,Group III: PHD,3,9,"$3,002 "
+Graduate: MA,Group III: PHD,3,10,"$3,225 "
+Graduate: MA,Group III: PHD,3,11,"$3,225 "
+Graduate: MA,Group III: PHD,3,12,"$3,225 "
+Graduate: MA,Group III: PHD,3,13,"$3,225 "
+Graduate: MA,Group III: PHD,4,1,$444 
+Graduate: MA,Group III: PHD,4,2,$888 
+Graduate: MA,Group III: PHD,4,3,"$1,332 "
+Graduate: MA,Group III: PHD,4,4,"$1,776 "
+Graduate: MA,Group III: PHD,4,5,"$2,220 "
+Graduate: MA,Group III: PHD,4,6,"$2,664 "
+Graduate: MA,Group III: PHD,4,7,"$3,108 "
+Graduate: MA,Group III: PHD,4,8,"$3,552 "
+Graduate: MA,Group III: PHD,4,9,"$3,996 "
+Graduate: MA,Group III: PHD,4,10,"$4,300 "
+Graduate: MA,Group III: PHD,4,11,"$4,300 "
+Graduate: MA,Group III: PHD,4,12,"$4,300 "
+Graduate: MA,Group III: PHD,4,13,"$4,300 "
+Graduate: MA,Group III: MA,1,1,$111 
+Graduate: MA,Group III: MA,1,2,$222 
+Graduate: MA,Group III: MA,1,3,$334 
+Graduate: MA,Group III: MA,1,4,$445 
+Graduate: MA,Group III: MA,1,5,$556 
+Graduate: MA,Group III: MA,1,6,$667 
+Graduate: MA,Group III: MA,1,7,$778 
+Graduate: MA,Group III: MA,1,8,$890 
+Graduate: MA,Group III: MA,1,9,"$1,000 "
+Graduate: MA,Group III: MA,1,10,"$1,000 "
+Graduate: MA,Group III: MA,1,11,"$1,000 "
+Graduate: MA,Group III: MA,1,12,"$1,000 "
+Graduate: MA,Group III: MA,1,13,"$1,000 "
+Graduate: MA,Group III: MA,2,1,$222 
+Graduate: MA,Group III: MA,2,2,$445 
+Graduate: MA,Group III: MA,2,3,$667 
+Graduate: MA,Group III: MA,2,4,$890 
+Graduate: MA,Group III: MA,2,5,"$1,112 "
+Graduate: MA,Group III: MA,2,6,"$1,334 "
+Graduate: MA,Group III: MA,2,7,"$1,557 "
+Graduate: MA,Group III: MA,2,8,"$1,779 "
+Graduate: MA,Group III: MA,2,9,"$2,000 "
+Graduate: MA,Group III: MA,2,10,"$2,000 "
+Graduate: MA,Group III: MA,2,11,"$2,000 "
+Graduate: MA,Group III: MA,2,12,"$2,000 "
+Graduate: MA,Group III: MA,2,13,"$2,000 "
+Graduate: MA,Group III: MA,3,1,$334 
+Graduate: MA,Group III: MA,3,2,$667 
+Graduate: MA,Group III: MA,3,3,"$1,001 "
+Graduate: MA,Group III: MA,3,4,"$1,334 "
+Graduate: MA,Group III: MA,3,5,"$1,668 "
+Graduate: MA,Group III: MA,3,6,"$2,002 "
+Graduate: MA,Group III: MA,3,7,"$2,335 "
+Graduate: MA,Group III: MA,3,8,"$2,669 "
+Graduate: MA,Group III: MA,3,9,"$3,000 "
+Graduate: MA,Group III: MA,3,10,"$3,000 "
+Graduate: MA,Group III: MA,3,11,"$3,000 "
+Graduate: MA,Group III: MA,3,12,"$3,000 "
+Graduate: MA,Group III: MA,3,13,"$3,000 "
+Graduate: MA,Group III: MA,4,1,$444 
+Graduate: MA,Group III: MA,4,2,$888 
+Graduate: MA,Group III: MA,4,3,"$1,332 "
+Graduate: MA,Group III: MA,4,4,"$1,776 "
+Graduate: MA,Group III: MA,4,5,"$2,220 "
+Graduate: MA,Group III: MA,4,6,"$2,664 "
+Graduate: MA,Group III: MA,4,7,"$3,108 "
+Graduate: MA,Group III: MA,4,8,"$3,552 "
+Graduate: MA,Group III: MA,4,9,"$4,000 "
+Graduate: MA,Group III: MA,4,10,"$4,000 "
+Graduate: MA,Group III: MA,4,11,"$4,000 "
+Graduate: MA,Group III: MA,4,12,"$4,000 "
+Graduate: MA,Group III: MA,4,13,"$4,000 "
+Graduate: MA,Group III: Other,1,1,$111 
+Graduate: MA,Group III: Other,1,2,$222 
+Graduate: MA,Group III: Other,1,3,$334 
+Graduate: MA,Group III: Other,1,4,$445 
+Graduate: MA,Group III: Other,1,5,$556 
+Graduate: MA,Group III: Other,1,6,$667 
+Graduate: MA,Group III: Other,1,7,$778 
+Graduate: MA,Group III: Other,1,8,$890 
+Graduate: MA,Group III: Other,1,9,$890 
+Graduate: MA,Group III: Other,1,10,$890 
+Graduate: MA,Group III: Other,1,11,$890 
+Graduate: MA,Group III: Other,1,12,$890 
+Graduate: MA,Group III: Other,1,13,$890 
+Graduate: MA,Group III: Other,2,1,$222 
+Graduate: MA,Group III: Other,2,2,$445 
+Graduate: MA,Group III: Other,2,3,$667 
+Graduate: MA,Group III: Other,2,4,$890 
+Graduate: MA,Group III: Other,2,5,"$1,112 "
+Graduate: MA,Group III: Other,2,6,"$1,334 "
+Graduate: MA,Group III: Other,2,7,"$1,557 "
+Graduate: MA,Group III: Other,2,8,"$1,780 "
+Graduate: MA,Group III: Other,2,9,"$1,780 "
+Graduate: MA,Group III: Other,2,10,"$1,780 "
+Graduate: MA,Group III: Other,2,11,"$1,780 "
+Graduate: MA,Group III: Other,2,12,"$1,780 "
+Graduate: MA,Group III: Other,2,13,"$1,780 "
+Graduate: MA,Group III: Other,3,1,$334 
+Graduate: MA,Group III: Other,3,2,$667 
+Graduate: MA,Group III: Other,3,3,"$1,001 "
+Graduate: MA,Group III: Other,3,4,"$1,334 "
+Graduate: MA,Group III: Other,3,5,"$1,668 "
+Graduate: MA,Group III: Other,3,6,"$2,002 "
+Graduate: MA,Group III: Other,3,7,"$2,335 "
+Graduate: MA,Group III: Other,3,8,"$2,670 "
+Graduate: MA,Group III: Other,3,9,"$2,670 "
+Graduate: MA,Group III: Other,3,10,"$2,670 "
+Graduate: MA,Group III: Other,3,11,"$2,670 "
+Graduate: MA,Group III: Other,3,12,"$2,670 "
+Graduate: MA,Group III: Other,3,13,"$2,670 "
+Graduate: MA,Group III: Other,4,1,$444 
+Graduate: MA,Group III: Other,4,2,$888 
+Graduate: MA,Group III: Other,4,3,"$1,332 "
+Graduate: MA,Group III: Other,4,4,"$1,776 "
+Graduate: MA,Group III: Other,4,5,"$2,220 "
+Graduate: MA,Group III: Other,4,6,"$2,664 "
+Graduate: MA,Group III: Other,4,7,"$3,108 "
+Graduate: MA,Group III: Other,4,8,"$3,560 "
+Graduate: MA,Group III: Other,4,9,"$3,560 "
+Graduate: MA,Group III: Other,4,10,"$3,560 "
+Graduate: MA,Group III: Other,4,11,"$3,560 "
+Graduate: MA,Group III: Other,4,12,"$3,560 "
+Graduate: MA,Group III: Other,4,13,"$3,560 "
+Graduate: PHD,Group III: PHD,1,1,$185 
+Graduate: PHD,Group III: PHD,1,2,$371 
+Graduate: PHD,Group III: PHD,1,3,$556 
+Graduate: PHD,Group III: PHD,1,4,$741 
+Graduate: PHD,Group III: PHD,1,5,$927 
+Graduate: PHD,Group III: PHD,1,6,"$1,075 "
+Graduate: PHD,Group III: PHD,1,7,"$1,075 "
+Graduate: PHD,Group III: PHD,1,8,"$1,075 "
+Graduate: PHD,Group III: PHD,1,9,"$1,075 "
+Graduate: PHD,Group III: PHD,1,10,"$1,075 "
+Graduate: PHD,Group III: PHD,1,11,"$1,075 "
+Graduate: PHD,Group III: PHD,1,12,"$1,075 "
+Graduate: PHD,Group III: PHD,1,13,"$1,075 "
+Graduate: PHD,Group III: PHD,2,1,$371 
+Graduate: PHD,Group III: PHD,2,2,$741 
+Graduate: PHD,Group III: PHD,2,3,"$1,112 "
+Graduate: PHD,Group III: PHD,2,4,"$1,483 "
+Graduate: PHD,Group III: PHD,2,5,"$1,853 "
+Graduate: PHD,Group III: PHD,2,6,"$2,150 "
+Graduate: PHD,Group III: PHD,2,7,"$2,150 "
+Graduate: PHD,Group III: PHD,2,8,"$2,150 "
+Graduate: PHD,Group III: PHD,2,9,"$2,150 "
+Graduate: PHD,Group III: PHD,2,10,"$2,150 "
+Graduate: PHD,Group III: PHD,2,11,"$2,150 "
+Graduate: PHD,Group III: PHD,2,12,"$2,150 "
+Graduate: PHD,Group III: PHD,2,13,"$2,150 "
+Graduate: PHD,Group III: PHD,3,1,$556 
+Graduate: PHD,Group III: PHD,3,2,"$1,112 "
+Graduate: PHD,Group III: PHD,3,3,"$1,668 "
+Graduate: PHD,Group III: PHD,3,4,"$2,224 "
+Graduate: PHD,Group III: PHD,3,5,"$2,780 "
+Graduate: PHD,Group III: PHD,3,6,"$3,225 "
+Graduate: PHD,Group III: PHD,3,7,"$3,225 "
+Graduate: PHD,Group III: PHD,3,8,"$3,225 "
+Graduate: PHD,Group III: PHD,3,9,"$3,225 "
+Graduate: PHD,Group III: PHD,3,10,"$3,225 "
+Graduate: PHD,Group III: PHD,3,11,"$3,225 "
+Graduate: PHD,Group III: PHD,3,12,"$3,225 "
+Graduate: PHD,Group III: PHD,3,13,"$3,225 "
+Graduate: PHD,Group III: PHD,4,1,$740 
+Graduate: PHD,Group III: PHD,4,2,"$1,480 "
+Graduate: PHD,Group III: PHD,4,3,"$2,220 "
+Graduate: PHD,Group III: PHD,4,4,"$2,960 "
+Graduate: PHD,Group III: PHD,4,5,"$3,700 "
+Graduate: PHD,Group III: PHD,4,6,"$4,300 "
+Graduate: PHD,Group III: PHD,4,7,"$4,300 "
+Graduate: PHD,Group III: PHD,4,8,"$4,300 "
+Graduate: PHD,Group III: PHD,4,9,"$4,300 "
+Graduate: PHD,Group III: PHD,4,10,"$4,300 "
+Graduate: PHD,Group III: PHD,4,11,"$4,300 "
+Graduate: PHD,Group III: PHD,4,12,"$4,300 "
+Graduate: PHD,Group III: PHD,4,13,"$4,300 "
+Graduate: PHD,Group III: MA,1,1,$185 
+Graduate: PHD,Group III: MA,1,2,$371 
+Graduate: PHD,Group III: MA,1,3,$556 
+Graduate: PHD,Group III: MA,1,4,$741 
+Graduate: PHD,Group III: MA,1,5,$927 
+Graduate: PHD,Group III: MA,1,6,"$1,000 "
+Graduate: PHD,Group III: MA,1,7,"$1,000 "
+Graduate: PHD,Group III: MA,1,8,"$1,000 "
+Graduate: PHD,Group III: MA,1,9,"$1,000 "
+Graduate: PHD,Group III: MA,1,10,"$1,000 "
+Graduate: PHD,Group III: MA,1,11,"$1,000 "
+Graduate: PHD,Group III: MA,1,12,"$1,000 "
+Graduate: PHD,Group III: MA,1,13,"$1,000 "
+Graduate: PHD,Group III: MA,2,1,$371 
+Graduate: PHD,Group III: MA,2,2,$741 
+Graduate: PHD,Group III: MA,2,3,"$1,112 "
+Graduate: PHD,Group III: MA,2,4,"$1,483 "
+Graduate: PHD,Group III: MA,2,5,"$1,853 "
+Graduate: PHD,Group III: MA,2,6,"$2,000 "
+Graduate: PHD,Group III: MA,2,7,"$2,000 "
+Graduate: PHD,Group III: MA,2,8,"$2,000 "
+Graduate: PHD,Group III: MA,2,9,"$2,000 "
+Graduate: PHD,Group III: MA,2,10,"$2,000 "
+Graduate: PHD,Group III: MA,2,11,"$2,000 "
+Graduate: PHD,Group III: MA,2,12,"$2,000 "
+Graduate: PHD,Group III: MA,2,13,"$2,000 "
+Graduate: PHD,Group III: MA,3,1,$556 
+Graduate: PHD,Group III: MA,3,2,"$1,112 "
+Graduate: PHD,Group III: MA,3,3,"$1,668 "
+Graduate: PHD,Group III: MA,3,4,"$2,224 "
+Graduate: PHD,Group III: MA,3,5,"$2,780 "
+Graduate: PHD,Group III: MA,3,6,"$3,000 "
+Graduate: PHD,Group III: MA,3,7,"$3,000 "
+Graduate: PHD,Group III: MA,3,8,"$3,000 "
+Graduate: PHD,Group III: MA,3,9,"$3,000 "
+Graduate: PHD,Group III: MA,3,10,"$3,000 "
+Graduate: PHD,Group III: MA,3,11,"$3,000 "
+Graduate: PHD,Group III: MA,3,12,"$3,000 "
+Graduate: PHD,Group III: MA,3,13,"$3,000 "
+Graduate: PHD,Group III: MA,4,1,$740 
+Graduate: PHD,Group III: MA,4,2,"$1,480 "
+Graduate: PHD,Group III: MA,4,3,"$2,220 "
+Graduate: PHD,Group III: MA,4,4,"$2,960 "
+Graduate: PHD,Group III: MA,4,5,"$3,700 "
+Graduate: PHD,Group III: MA,4,6,"$4,000 "
+Graduate: PHD,Group III: MA,4,7,"$4,000 "
+Graduate: PHD,Group III: MA,4,8,"$4,000 "
+Graduate: PHD,Group III: MA,4,9,"$4,000 "
+Graduate: PHD,Group III: MA,4,10,"$4,000 "
+Graduate: PHD,Group III: MA,4,11,"$4,000 "
+Graduate: PHD,Group III: MA,4,12,"$4,000 "
+Graduate: PHD,Group III: MA,4,13,"$4,000 "
+Graduate: PHD,Group III: Other,1,1,$185 
+Graduate: PHD,Group III: Other,1,2,$371 
+Graduate: PHD,Group III: Other,1,3,$556 
+Graduate: PHD,Group III: Other,1,4,$741 
+Graduate: PHD,Group III: Other,1,5,$890 
+Graduate: PHD,Group III: Other,1,6,$890 
+Graduate: PHD,Group III: Other,1,7,$890 
+Graduate: PHD,Group III: Other,1,8,$890 
+Graduate: PHD,Group III: Other,1,9,$890 
+Graduate: PHD,Group III: Other,1,10,$890 
+Graduate: PHD,Group III: Other,1,11,$890 
+Graduate: PHD,Group III: Other,1,12,$890 
+Graduate: PHD,Group III: Other,1,13,$890 
+Graduate: PHD,Group III: Other,2,1,$371 
+Graduate: PHD,Group III: Other,2,2,$741 
+Graduate: PHD,Group III: Other,2,3,"$1,112 "
+Graduate: PHD,Group III: Other,2,4,"$1,483 "
+Graduate: PHD,Group III: Other,2,5,"$1,780 "
+Graduate: PHD,Group III: Other,2,6,"$1,780 "
+Graduate: PHD,Group III: Other,2,7,"$1,780 "
+Graduate: PHD,Group III: Other,2,8,"$1,780 "
+Graduate: PHD,Group III: Other,2,9,"$1,780 "
+Graduate: PHD,Group III: Other,2,10,"$1,780 "
+Graduate: PHD,Group III: Other,2,11,"$1,780 "
+Graduate: PHD,Group III: Other,2,12,"$1,780 "
+Graduate: PHD,Group III: Other,2,13,"$1,780 "
+Graduate: PHD,Group III: Other,3,1,$556 
+Graduate: PHD,Group III: Other,3,2,"$1,112 "
+Graduate: PHD,Group III: Other,3,3,"$1,668 "
+Graduate: PHD,Group III: Other,3,4,"$2,224 "
+Graduate: PHD,Group III: Other,3,5,"$2,670 "
+Graduate: PHD,Group III: Other,3,6,"$2,670 "
+Graduate: PHD,Group III: Other,3,7,"$2,670 "
+Graduate: PHD,Group III: Other,3,8,"$2,670 "
+Graduate: PHD,Group III: Other,3,9,"$2,670 "
+Graduate: PHD,Group III: Other,3,10,"$2,670 "
+Graduate: PHD,Group III: Other,3,11,"$2,670 "
+Graduate: PHD,Group III: Other,3,12,"$2,670 "
+Graduate: PHD,Group III: Other,3,13,"$2,670 "
+Graduate: PHD,Group III: Other,4,1,$740 
+Graduate: PHD,Group III: Other,4,2,"$1,480 "
+Graduate: PHD,Group III: Other,4,3,"$2,220 "
+Graduate: PHD,Group III: Other,4,4,"$2,960 "
+Graduate: PHD,Group III: Other,4,5,"$3,560 "
+Graduate: PHD,Group III: Other,4,6,"$3,560 "
+Graduate: PHD,Group III: Other,4,7,"$3,560 "
+Graduate: PHD,Group III: Other,4,8,"$3,560 "
+Graduate: PHD,Group III: Other,4,9,"$3,560 "
+Graduate: PHD,Group III: Other,4,10,"$3,560 "
+Graduate: PHD,Group III: Other,4,11,"$3,560 "
+Graduate: PHD,Group III: Other,4,12,"$3,560 "
+Graduate: PHD,Group III: Other,4,13,"$3,560 "
